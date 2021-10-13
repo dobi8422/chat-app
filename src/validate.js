@@ -9,8 +9,8 @@ defineRule('name', value => {
   if (!value || !value.length) {
     return 'Please enter username'
   }
-  if (value.length < 3 || value.length > 14) {
-    return 'Must between 3 ~ 14 character'
+  if (value.length < 3 || value.length > 10) {
+    return 'Must between 3 ~ 10 character'
   }
   return true
 })

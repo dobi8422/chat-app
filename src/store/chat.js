@@ -9,20 +9,20 @@ export default {
     privateRoom: []
   }),
   actions: {
-    newChat (context, payload) {
+    newChat ({ dispatch }, payload) {
       if (!payload) { return true }
       const reg = /^[a-zA-Z0-9_!?~\u4e00-\u9fa5]+$/
       if (!reg.test(payload)) {
-        context.dispatch('alertMessage', 'only "English alphabet", "Chinese character" or "_", "!", "?", "~"')
+        dispatch('alertMessage', 'only "English alphabet", "Chinese character" or "_", "!", "?", "~"')
         return true
       }
       const chatroomRef = database.ref('chatroom')
       const chatroom = { room: payload }
       chatroomRef.push(chatroom)
-      context.dispatch('alertMessage', 'Added successfully')
-      context.dispatch('getRoom')
+      dispatch('alertMessage', 'Added successfully')
+      dispatch('getRoom')
     },
-    getRoom (context) {
+    getRoom ({ commit }) {
       const chatroomRef = database.ref('chatroom')
       const allRoom = []
       chatroomRef.on('value', snapshot => {
@@ -30,12 +30,13 @@ export default {
         Object.keys(data).forEach(key => {
           allRoom.push({ room: data[key].room })
         })
-        context.commit('GETROOM', allRoom)
+        commit('GETROOM', allRoom)
       })
     },
-    enterRoom (context, payload) {
+    enterRoom ({ commit }, payload) {
       router.push(`/chat/${payload}`)
-      context.commit('ENTERROOM', payload)
+      commit('GETMESSAGES', '')
+      commit('ENTERROOM', payload)
     },
     sendMessage ({ rootState, dispatch, state }, payload) {
       const time = new Date()
@@ -67,7 +68,7 @@ export default {
         commit('GETMESSAGES', Messages)
       })
     },
-    getPrivateRoom (context) {
+    getPrivateRoom ({ commit }) {
       const privateroomRef = database.ref('privateroom')
       const privateRoom = []
       privateroomRef.on('value', snapshot => {
@@ -79,7 +80,7 @@ export default {
             hint: data[key].hint
           })
         })
-        context.commit('GETPRIVATEROOM', privateRoom)
+        commit('GETPRIVATEROOM', privateRoom)
       })
     }
   },

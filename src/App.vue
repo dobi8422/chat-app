@@ -2,7 +2,7 @@
   <div id="app">
     <Nav v-if="!userName"/>
     <Message/>
-    <!-- <OnlinePanel v-if="userName"/> -->
+    <OnlinePanel v-if="userName"/>
     <router-view/>
   </div>
 </template>
@@ -10,19 +10,19 @@
 <script>
 import Nav from '@/components/Nav.vue'
 import Message from '@/components/Message.vue'
-// import OnlinePanel from '@/components/OnlinePanel.vue'
+import OnlinePanel from '@/components/OnlinePanel.vue'
 import { mapActions, mapGetters } from 'vuex'
 import { auth } from '@/firebase.js'
 
 export default {
   components: {
     Nav,
-    Message
-    // OnlinePanel
+    Message,
+    OnlinePanel
   },
   methods: {
     onresize () { this.resizeWidth(document.body.clientWidth) },
-    ...mapActions(['resizeWidth', 'UserName'])
+    ...mapActions(['resizeWidth', 'UserName', 'UserState'])
   },
   computed: {
     ...mapGetters(['userName'])
@@ -34,6 +34,7 @@ export default {
         this.$router.push('/login')
       } else {
         this.UserName(user.displayName)
+        this.UserState()
         this.$router.push('/choose_chat')
       }
     })
@@ -86,10 +87,6 @@ input{
   &:focus{
     outline: 0;
   }
-}
-input:-webkit-autofill , textarea:-webkit-autofill, select:-webkit-autofill {
-  -webkit-text-fill-color: #00000000 ;
-  background-color: transparent;
 }
 .interface{
   width: 300px;

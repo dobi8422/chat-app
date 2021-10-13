@@ -1,10 +1,13 @@
-import { auth } from '@/firebase.js'
+import { auth, database } from '@/firebase.js'
 import router from '@/router'
 
 export default {
-  state: () => ({ userName: '' }),
+  state: () => ({
+    userName: '',
+    userState: []
+  }),
   actions: {
-    async checkAccount (context, payload) {
+    async checkAccount ({ dispatch }, payload) {
       const { email, password } = payload
       let name
       try {
@@ -12,14 +15,14 @@ export default {
           .then(res => {
             name = res.user.displayName
           })
-        context.dispatch('alertMessage', `Welcom, ${name}`)
-        context.dispatch('UserName', name)
+        dispatch('alertMessage', `Welcom, ${name}`)
+        dispatch('UserName', name)
         router.push('/choose_chat')
       } catch {
-        context.dispatch('alertMessage', '"Wrong password" or "Email is not yet register"')
+        dispatch('alertMessage', '"Wrong password" or "Email is not yet register"')
       }
     },
-    async registerAccount (context, payload) {
+    async registerAccount ({ dispatch }, payload) {
       const { name, email, password } = payload
       const time = new Date()
       const id = time.getMilliseconds()
@@ -30,26 +33,53 @@ export default {
           photoURL: `https://picsum.photos/id/${id}/200/200`
         })
         router.push('/login')
-        context.dispatch('alertMessage', `Registration success：${name}`)
+        dispatch('alertMessage', `Registration success：${name}`)
       } catch {
-        context.dispatch('alertMessage', 'Registration failed')
+        dispatch('alertMessage', 'Registration failed')
       }
     },
-    UserName (context, payload) {
-      context.commit('USERNAME', payload)
+    UserName ({ commit }, payload) {
+      commit('USERNAME', payload)
     },
-    logout (context) {
+    logout ({ dispatch }) {
       auth.signOut().then(() => {
-        context.dispatch('alertMessage', 'Sign out')
-        context.dispatch('UserName', '')
+        dispatch('alertMessage', 'Sign out')
+        dispatch('UserName', '')
         router.push('/login')
-      }).catch(context.dispatch('alertMessage', 'Logout failed'))
+      }).catch(dispatch('alertMessage', 'Logout failed'))
+    },
+    UserState ({ commit }) {
+      const currentUser = auth.currentUser
+      const { displayName, photoURL, uid } = currentUser
+      const userstate = database.ref(`userstate/${uid}`)
+      const connect = database.ref('.info/connected')
+      connect.on('value', snapshot => {
+        if (snapshot.val()) {
+          const isOnline = {
+            user: displayName,
+            online: true,
+            photoURL: photoURL
+          }
+          const isOffline = {
+            user: displayName,
+            online: false,
+            photoURL: photoURL
+          }
+          userstate.onDisconnect().set(isOffline)
+            .then(() => { userstate.set(isOnline) })
+        }
+      })
+      database.ref('userstate').on('value', (snapshot) => {
+        commit('USERSTATE', snapshot.val())
+      })
     }
   },
   mutations: {
-    USERNAME (state, payload) { state.userName = payload }
+    USERNAME (state, payload) { state.userName = payload },
+    USERSTATE (state, payload) { state.userState = payload }
   },
   getters: {
-    userName: state => state.userName
+    userName: state => state.userName,
+    userState: state => state.userState
   }
 }

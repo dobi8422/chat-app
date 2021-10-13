@@ -1,4 +1,4 @@
-import { createRouter, createWebHistory } from 'vue-router'
+import { createRouter, createWebHashHistory } from 'vue-router'
 
 const routes = [
   { path: '/:catchAll(.*)', redirect: '/choose_chat' },
@@ -8,6 +8,6 @@ const routes = [
   { path: '/chat/:chatId', name: 'Chat', component: () => import('@/views/Chat.vue') }
 ]
 
-const router = createRouter({ history: createWebHistory(), routes })
+const router = createRouter({ history: createWebHashHistory(), routes })
 
 export default router

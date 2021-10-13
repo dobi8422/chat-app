@@ -9,12 +9,12 @@ const store = createStore({
     fullWidth: 800
   }),
   actions: {
-    alertMessage (context, payload) {
-      context.commit('MESSAGE', payload)
-      setTimeout(() => { context.commit('MESSAGE', '') }, 2000)
+    alertMessage ({ commit }, payload) {
+      commit('MESSAGE', payload)
+      setTimeout(() => { commit('MESSAGE', '') }, 2000)
     },
-    resizeWidth (context, payload) {
-      context.commit('RESIZEWIDTH', payload)
+    resizeWidth ({ commit }, payload) {
+      commit('RESIZEWIDTH', payload)
     }
   },
   mutations: {

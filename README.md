@@ -17,6 +17,7 @@ https://dobi8422.github.io/chat-app/
 聊天室
 * 頭像, 名字, 輸入時間
 * 可調整視窗大小
+顯示上線人數
 
 ---
 ## 新挑戰
@@ -31,17 +32,10 @@ https://dobi8422.github.io/chat-app/
 8. input-range
 
 ---
-## 待加功能
-1. chat-app 2.0 ?{
-    上線人數
-    已讀
-    註冊時間
-    加入日期分隔線
-  }
+## 待優化
+1. chat-app 2.0 ? (已讀, 註冊時間, 加入日期分隔線)
 2. 用 Firebase CLI?
 3. prompt樣式
 4. 不使用bootstrap，套件Modal(點選頭像顯示個人資料) -> 可替換照片
 5. 模擬鍵盤功能 -> (window + . ，內建表情)
-記住密碼 避免顏色變化
-
----
+6. 記住密碼 -> 背景文字調色
