@@ -42,10 +42,10 @@ export default {
       if (needPassword === `${room.password}`) {
         this.enterRoom(room.room)
       } else {
-        console.log('wrong password')
+        this.alertMessage('wrong password')
       }
     },
-    ...mapActions(['enterRoom', 'logout', 'newChat', 'getRoom', 'getPrivateRoom'])
+    ...mapActions(['enterRoom', 'logout', 'newChat', 'getRoom', 'getPrivateRoom', 'alertMessage'])
   },
   computed: {
     filterAllRoom () {

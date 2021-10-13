@@ -10,14 +10,14 @@ https://dobi8422.github.io/chat-app/
 ![](https://i.postimg.cc/FRW3STM3/4.png)
 ---
 ## 功能
-註冊
-登入(網站內, google, FB)
-驗證(vee-validate 4)
-大廳(聊天室: 選擇, 新增, 查詢，需要密碼的聊天室)
-聊天室
-* 頭像, 名字, 輸入時間
-* 可調整視窗大小
-顯示上線人數
+* 註冊
+* 登入(網站內, google, FB)
+* 驗證(vee-validate 4)
+* 大廳(聊天室: 選擇, 新增, 查詢，需要密碼的聊天室)
+* 聊天室
+  * 頭像, 名字, 輸入時間
+  * 可調整視窗大小
+* 顯示上線人數
 
 ---
 ## 新挑戰
@@ -36,6 +36,7 @@ https://dobi8422.github.io/chat-app/
 1. chat-app 2.0 ? (已讀, 註冊時間, 加入日期分隔線)
 2. 用 Firebase CLI?
 3. prompt樣式
-4. 不使用bootstrap，套件Modal(點選頭像顯示個人資料) -> 可替換照片
-5. 模擬鍵盤功能 -> (window + . ，內建表情)
+4. 不使用bootstrap，套件Modal(點選頭像顯示個人資料)
+5. 可替換照片，新增貼圖
 6. 記住密碼 -> 背景文字調色
+7. emoji? -> 模擬鍵盤功能 -> (window + . ，內建表情)
