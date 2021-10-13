@@ -87,6 +87,10 @@ input{
     outline: 0;
   }
 }
+input:-webkit-autofill , textarea:-webkit-autofill, select:-webkit-autofill {
+  -webkit-text-fill-color: #00000000 ;
+  background-color: transparent;
+}
 .interface{
   width: 300px;
   display: flex;

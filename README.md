@@ -42,5 +42,6 @@ https://dobi8422.github.io/chat-app/
 3. prompt樣式
 4. 不使用bootstrap，套件Modal(點選頭像顯示個人資料) -> 可替換照片
 5. 模擬鍵盤功能 -> (window + . ，內建表情)
+記住密碼 避免顏色變化
 
 ---
