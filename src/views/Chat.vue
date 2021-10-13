@@ -64,7 +64,7 @@ export default {
 <style lang="scss">
 .chat{
   background: $Z_main;
-  padding: 1em 0;
+  padding: .5em 0 1em 0;
   border-radius: 5px;
   width: var(--scale);
   height: calc(100% - 100px);
@@ -73,6 +73,10 @@ export default {
   .chat_title{
     display: flex;
     justify-content: space-between;
+    .back_lobby{
+      padding: .2em;
+      margin-right: .5em;
+    }
   }
   .chat_name{
     padding: 0 0 5px 0;

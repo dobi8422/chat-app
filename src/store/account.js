@@ -17,6 +17,7 @@ export default {
           })
         dispatch('alertMessage', `Welcom, ${name}`)
         dispatch('UserName', name)
+        dispatch('UserState')
         router.push('/choose_chat')
       } catch {
         dispatch('alertMessage', '"Wrong password" or "Email is not yet register"')
