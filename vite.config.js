@@ -4,6 +4,7 @@ import path from 'path'
 
 export default defineConfig({
   plugins: [vue()],
+  base: '/chat-app/',
   resolve: {
     alias: {
       '@': path.resolve(__dirname, 'src')

@@ -1,9 +1,13 @@
 # 聊天室 (Vue3 + postman)
 Demo:
+https://dobi8422.github.io/chat-app/
+
 登入畫面
-![]()
+![](https://i.postimg.cc/02LGZHbC/0.png)
+![](https://i.postimg.cc/d0F2ckRk/2.png)
 聊天室
-![]()
+![](https://i.postimg.cc/rp9SVVgh/3.png)
+![](https://i.postimg.cc/FRW3STM3/4.png)
 ---
 ## 功能
 註冊
@@ -13,7 +17,6 @@ Demo:
 聊天室
 * 頭像, 名字, 輸入時間
 * 可調整視窗大小
-
 
 ---
 ## 新挑戰

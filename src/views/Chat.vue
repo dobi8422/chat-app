@@ -41,27 +41,14 @@ export default {
       root.style.setProperty('--scale', `${this.scale / 100 * (document.body.clientWidth - 350) + 400}px`)
     },
     emoji () { // keycode: 91 + 190
-      // const event = document.createEvent('KeyboardEvent')
-      // event.initKeyboardEvent('keydown', true, true, document.defaultView, 'a', 0, 'Shift', 0)
-      // console.log(event)
-      // const key = new InputEvent()
-      // console.log(key)
-      // const dom = document.querySelector('#input')
-      // const evt = new InputEvent('input', {
-      //     inputType: 'insertText',
-      //     data: st,
-      //     dataTransfer: null,
-      //     isComposing: false
-      // })
-      // dom.value = '輸入的內容'
-      // dom.dispatchEvent(evt)
+      this.alertMessage('Emoji is not yet open')
     },
     SendMessage () {
       if (!this.message) { return true }
       this.sendMessage(this.message)
       this.message = ''
     },
-    ...mapActions(['sendMessage', 'getMessages'])
+    ...mapActions(['sendMessage', 'getMessages', 'alertMessage'])
   },
   computed: {
     ...mapGetters(['fullWidth', 'userName', 'room', 'allMessages'])
