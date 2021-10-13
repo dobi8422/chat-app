@@ -1,0 +1,29 @@
+{
+  "name": "chat-app",
+  "version": "0.0.0",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "serve": "vite preview",
+    "json": "json-server --watch db.json --port 8888"
+  },
+  "author": "dobi8422",
+  "dependencies": {
+    "@fortawesome/fontawesome-free": "^5.15.4",
+    "firebase": "^9.1.2",
+    "json-server": "^0.17.0",
+    "vee-validate": "^4.5.2",
+    "vue": "^3.2.16",
+    "vue-router": "^4.0.11",
+    "vuex": "^4.0.2"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-vue": "^1.9.3",
+    "eslint": "^7.32.0",
+    "eslint-config-prettier": "^8.3.0",
+    "eslint-plugin-vue": "^7.19.1",
+    "prettier": "^2.4.1",
+    "sass": "^1.42.1",
+    "vite": "^2.6.4"
+  }
+}

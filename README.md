@@ -1,0 +1,43 @@
+# 聊天室 (Vue3 + postman)
+Demo:
+登入畫面
+![]()
+聊天室
+![]()
+---
+## 功能
+註冊
+登入(網站內, google, FB)
+驗證(vee-validate 4)
+大廳(聊天室: 選擇, 新增, 查詢，需要密碼的聊天室)
+聊天室
+* 頭像, 名字, 輸入時間
+* 可調整視窗大小
+
+
+---
+## 新挑戰
+1. 使用vite
+2. postman測試API
+3. 全域scss in vite (adjust vite.config.js)
+4. vue animation - `<transition>`
+5. 不使用bootstrap，RWD(chat)，drop-down menu(nav)
+6. props, emit -> vuex is better (updated)
+  * vuex的context包含{ rootState, dispatch, state, ......
+7. Firebase in vite (import problem: version:9 -> route "compat")
+8. input-range
+
+---
+## 待加功能
+1. chat-app 2.0 ?{
+    上線人數
+    已讀
+    註冊時間
+    加入日期分隔線
+  }
+2. 用 Firebase CLI?
+3. prompt樣式
+4. 不使用bootstrap，套件Modal(點選頭像顯示個人資料) -> 可替換照片
+5. 模擬鍵盤功能 -> (window + . ，內建表情)
+
+---
