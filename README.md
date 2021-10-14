@@ -34,12 +34,12 @@ https://dobi8422.github.io/chat-app/
 
 ---
 ## 目前優化目標: modal, add photo, add intro, prompt
-prompt -> Modal
+* prompt -> Modal
 
-modal -> 動畫
-可替換照片 -> firebase storage
-填寫個人介紹 -> input重疊p, temptext
-新增貼圖 -> firebase storage
+* modal -> 動畫
+* 可替換照片 -> firebase storage
+* 填寫個人介紹 -> input重疊p, temptext
+* 新增貼圖 -> firebase storage
 
 ---
 ## 待優化
