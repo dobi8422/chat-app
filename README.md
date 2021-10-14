@@ -32,13 +32,16 @@ https://dobi8422.github.io/chat-app/
 8. input-range
 
 ---
-## 待優化
-. 不使用bootstrap，套件Modal
-4. Modal(點選頭像顯示個人資料)
-5. 可替換照片，新增貼圖
-3. prompt -> Modal
+## 目前優化目標
+1. 不使用bootstrap，套件Modal
+2. Modal(點選頭像顯示個人資料)
+3. 可替換照片，新增貼圖
+4. prompt -> Modal
+5. 內容可輸入日、韓文...
 
-5. chat-app 2.0 (已讀, 註冊時間, 加入日期分隔線)
-6. 改用 Firebase CLI ?
-6. 記住密碼 -> 背景文字調色
-7. emoji? -> 模擬鍵盤功能 -> (window + . ，內建表情)
+---
+## 待優化
+1. chat-app 2.0 (已讀, 註冊時間, 加入日期分隔線)
+2. 改用 Firebase CLI ?
+3. 記住密碼 -> 背景文字調色
+4. emoji? -> 模擬鍵盤功能 -> (window + . ，內建表情)
