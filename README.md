@@ -2,12 +2,13 @@
 Demo:
 https://dobi8422.github.io/chat-app/
 
-登入畫面
-![](https://i.postimg.cc/02LGZHbC/0.png)
-![](https://i.postimg.cc/d0F2ckRk/2.png)
-聊天室
-![](https://i.postimg.cc/rp9SVVgh/3.png)
-![](https://i.postimg.cc/FRW3STM3/4.png)
+* 登入畫面
+>![](https://i.postimg.cc/02LGZHbC/0.png)
+>![](https://i.postimg.cc/d0F2ckRk/2.png)
+* 聊天室
+>![](https://i.postimg.cc/rp9SVVgh/3.png)
+>![](https://i.postimg.cc/FRW3STM3/4.png)
+>
 ---
 ## 功能
 * 註冊
