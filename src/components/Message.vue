@@ -19,6 +19,7 @@ export default { computed: { ...mapGetters(['message']) } }
   top: 60px;
   right: 50px;
   border-radius: 20px;
+  z-index: 10;
 }
 .message-enter-from, .message-leave-to{
   transform: translateX(200px);

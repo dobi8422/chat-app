@@ -11,9 +11,9 @@ export default {
   actions: {
     newChat ({ dispatch }, payload) {
       if (!payload) { return true }
-      const reg = /^[a-zA-Z0-9_!?~\u4e00-\u9fa5]+$/
+      const reg = /^[a-zA-Z0-9_!?~\u4e00-\u9fa5\u0800-\u4e00\xAC00-\xD7A3\x3130-\x318F]+$/
       if (!reg.test(payload)) {
-        dispatch('alertMessage', 'only "English alphabet", "Chinese character" or "_", "!", "?", "~"')
+        dispatch('alertMessage', 'only "English", "中文" or "_", "!", "?", "~"')
         return true
       }
       const chatroomRef = database.ref('chatroom')

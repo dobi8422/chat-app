@@ -8,7 +8,7 @@
       <div class="content" v-if="panelDown">
         <p class="title" v-if="panelDown"><i class="fas fa-signal"></i> 目前上線</p>
         <div class="onlineUser" v-for="user in userState" :key="user.uid">
-          <img v-if="user.online" :src="user.photoURL">
+          <img v-if="user.online" :src="user.photoURL" @click="UserProfile(user.user)">
           <p v-if="user.online">{{ user.user }}</p>
         </div>
       </div>
@@ -17,12 +17,15 @@
 </template>
 
 <script>
-import { mapGetters } from 'vuex'
+import { mapActions, mapGetters } from 'vuex'
 
 export default {
   data: () => ({
     panelDown: false
   }),
+  methods: {
+    ...mapActions(['UserProfile'])
+  },
   computed: {
     onlineUser () {
       return 'hi'
@@ -66,7 +69,6 @@ button{
     display: flex;
     flex-flow: row nowrap;
     align-items: center;
-    padding: .5em 0;
     img{
       width: 40px;
       height: 40px;
@@ -74,7 +76,7 @@ button{
     }
     p{
       font-size: 1.5em;
-      margin: 0 .4em;
+      margin: .5em .4em;
     }
   }
 }

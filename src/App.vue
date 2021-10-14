@@ -2,8 +2,9 @@
   <div id="app">
     <Nav v-if="!userName"/>
     <Message/>
-    <OnlinePanel v-if="userName"/>
     <router-view/>
+    <OnlinePanel v-if="userName"/>
+    <Modal v-if="isModal"/>
   </div>
 </template>
 
@@ -11,6 +12,7 @@
 import Nav from '@/components/Nav.vue'
 import Message from '@/components/Message.vue'
 import OnlinePanel from '@/components/OnlinePanel.vue'
+import Modal from '@/components/Modal.vue'
 import { mapActions, mapGetters } from 'vuex'
 import { auth } from '@/firebase.js'
 
@@ -18,14 +20,15 @@ export default {
   components: {
     Nav,
     Message,
-    OnlinePanel
+    OnlinePanel,
+    Modal
   },
   methods: {
     onresize () { this.resizeWidth(document.body.clientWidth) },
     ...mapActions(['resizeWidth', 'UserName', 'UserState'])
   },
   computed: {
-    ...mapGetters(['userName'])
+    ...mapGetters(['userName', 'isModal'])
   },
   mounted () {
     window.onresize = () => { this.onresize() }

@@ -4,7 +4,8 @@ import router from '@/router'
 export default {
   state: () => ({
     userName: '',
-    userState: []
+    userState: [],
+    lookUserProfile: []
   }),
   actions: {
     async checkAccount ({ dispatch }, payload) {
@@ -31,7 +32,8 @@ export default {
         await auth.createUserWithEmailAndPassword(email, password)
         await auth.currentUser.updateProfile({
           displayName: name,
-          photoURL: `https://picsum.photos/id/${id}/200/200`
+          photoURL: `https://picsum.photos/id/${id}/200/200`,
+          phoneNumber: 'nothing' // 代替introdution
         })
         router.push('/login')
         dispatch('alertMessage', `Registration success：${name}`)
@@ -51,7 +53,7 @@ export default {
     },
     UserState ({ commit }) {
       const currentUser = auth.currentUser
-      const { displayName, photoURL, uid } = currentUser
+      const { displayName, photoURL, uid, phoneNumber } = currentUser
       const userstate = database.ref(`userstate/${uid}`)
       const connect = database.ref('.info/connected')
       connect.on('value', snapshot => {
@@ -59,12 +61,14 @@ export default {
           const isOnline = {
             user: displayName,
             online: true,
-            photoURL: photoURL
+            photoURL: photoURL,
+            phoneNumber: phoneNumber
           }
           const isOffline = {
             user: displayName,
             online: false,
-            photoURL: photoURL
+            photoURL: photoURL,
+            phoneNumber: phoneNumber
           }
           userstate.onDisconnect().set(isOffline)
             .then(() => { userstate.set(isOnline) })
@@ -73,14 +77,31 @@ export default {
       database.ref('userstate').on('value', (snapshot) => {
         commit('USERSTATE', snapshot.val())
       })
+    },
+    UserProfile ({ commit, state }, payload) {
+      const lookUserProfile = Object.values(state.userState).filter(item => {
+        return item.user === payload
+      })
+      commit('LOOKUSERPROFILE', lookUserProfile)
+      commit('ISMODEL', true)
     }
+    // editProfile ({ state, dispatch }, payload) {
+    //   console.log(payload)
+    //   // auth.currentUser.updateProfile({
+    //   //   photoURL: `https://picsum.photos/id/${id}/200/200`
+    //   // })
+    //   // dispatch('alertMessage', `Registration success：${name}`)
+    //   dispatch('UserProfile', state.userName)
+    // }
   },
   mutations: {
     USERNAME (state, payload) { state.userName = payload },
-    USERSTATE (state, payload) { state.userState = payload }
+    USERSTATE (state, payload) { state.userState = payload },
+    LOOKUSERPROFILE (state, payload) { state.lookUserProfile = payload }
   },
   getters: {
     userName: state => state.userName,
-    userState: state => state.userState
+    userState: state => state.userState,
+    userProfile: state => state.lookUserProfile
   }
 }
