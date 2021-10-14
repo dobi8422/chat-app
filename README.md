@@ -28,7 +28,7 @@ https://dobi8422.github.io/chat-app/
 4. vue animation - `<transition>`
 5. 不使用bootstrap，RWD(chat)，drop-down menu(nav)，Modal(個人資料)
 6. props, emit -> vuex is better (updated)
-  * vuex的context包含{ rootState, dispatch, state, ......
+>vuex的context包含{ rootState, dispatch, state, ......
 7. Firebase in vite (import problem: version:9 -> route "compat")
 8. input-range
 9. firebase內建函式...set()...，將資料轉成`{屬性: {...}}`，不好利用 -> Object.values() or Object.keys() 轉成`[{...}]`，比較好用 (store/account.js vs. store/chat.js)
