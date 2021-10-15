@@ -10,7 +10,7 @@
         <div class="wrap-1">
           <img :src=userProfile[0].photoURL alt="">
           <label v-if="userName === userProfile[0].user">
-            <input type="file" @change="alertMessage('not yet open')">
+            <input id="input" type="file" @change="inputFile">
             <span><i class="fas fa-edit"></i></span>
           </label>
         </div>
@@ -33,7 +33,11 @@ export default {
     name: ''
   }),
   methods: {
-    ...mapActions(['closeModal', 'alertMessage']) //, 'editProfile'
+    inputFile () {
+      const selectedFile = document.getElementById('input').files[0]
+      this.editProfile(selectedFile)
+    },
+    ...mapActions(['closeModal', 'alertMessage', 'editProfile'])
   },
   computed: {
     ...mapGetters(['userName', 'userProfile'])

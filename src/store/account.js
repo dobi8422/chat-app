@@ -1,4 +1,4 @@
-import { auth, database } from '@/firebase.js'
+import { auth, database, storage } from '@/firebase.js'
 import router from '@/router'
 
 export default {
@@ -56,7 +56,7 @@ export default {
     },
     UserState ({ commit }) {
       const currentUser = auth.currentUser
-      const { displayName, photoURL, uid, phoneNumber } = currentUser
+      const { displayName, photoURL, uid } = currentUser
       const userstate = database.ref(`userstate/${uid}`)
       const connect = database.ref('.info/connected')
       connect.on('value', snapshot => {
@@ -64,14 +64,14 @@ export default {
           const isOnline = {
             user: displayName,
             online: true,
-            photoURL: photoURL,
-            phoneNumber: phoneNumber
+            photoURL: photoURL
+            // phoneNumber: phoneNumber
           }
           const isOffline = {
             user: displayName,
             online: false,
-            photoURL: photoURL,
-            phoneNumber: phoneNumber
+            photoURL: photoURL
+            // phoneNumber: phoneNumber
           }
           userstate.onDisconnect().set(isOffline)
             .then(() => { userstate.set(isOnline) })
@@ -87,15 +87,24 @@ export default {
       })
       commit('LOOKUSERPROFILE', lookUserProfile)
       commit('ISMODEL', true)
+    },
+    async editProfile ({ state, dispatch }, payload) {
+      // 上傳資料
+      // const storageRef = storage.ref(`${payload.name}`).put(payload)
+      // await storageRef.then(res => {
+      //   auth.currentUser.updateProfile({
+      //     photoURL: `${res.ref.fullPath}`
+      //   })
+      // })
+      // 如何得到圖片url ???????????????????????
+      // await storageRef.on('state_changed', snapshot => {}, () => {
+      //   storage.ref().child(payload.name)
+      //     .getDownloadURL().then(url => console.log(url))
+      // })
+      // console.log(storage.reference.child(`${payload.name}`))
+      dispatch('alertMessage', 'not yet open')
+      // dispatch('UserProfile', state.userName)
     }
-    // editProfile ({ state, dispatch }, payload) {
-    //   console.log(payload)
-    //   // auth.currentUser.updateProfile({
-    //   //   photoURL: `https://picsum.photos/id/${id}/200/200`
-    //   // })
-    //   // dispatch('alertMessage', `Registration success：${name}`)
-    //   dispatch('UserProfile', state.userName)
-    // }
   },
   mutations: {
     USERNAME (state, payload) { state.userName = payload },

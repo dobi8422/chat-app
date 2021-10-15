@@ -35,13 +35,15 @@ https://dobi8422.github.io/chat-app/
 9. prompt -> 不好調樣式 -> 直接套Modal(Promp.vue)
 
 ---
-## 目前優化目標: modal, add photo, add intro, prompt
+## 目前優化目標:
+* firebase storage，遇到問題: 無法取得上傳圖片路徑
 * 可替換照片 -> firebase storage
 * 填寫個人介紹 -> input重疊p, temptext
 * 新增貼圖 -> firebase storage
 
 * 簡化vuex -> mapMutations, ...
 * 簡化scss -> 通用...
+* 簡化css -> mixin, include
 
 ---
 ## 待優化
