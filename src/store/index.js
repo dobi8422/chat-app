@@ -6,7 +6,8 @@ const store = createStore({
   state: () => ({
     message: '',
     fullWidth: 800,
-    isModal: false
+    isModal: false,
+    isPrompt: false
   }),
   actions: {
     alertMessage ({ commit }, payload) {
@@ -25,12 +26,14 @@ const store = createStore({
     MESSAGE (state, payload) { state.message = payload },
     RESIZEWIDTH (state, payload) { state.fullWidth = payload },
     ISMODEL (state, payload) { state.isModal = payload },
-    CLEARMODAL (state) { state.lookUserProfile = [] }
+    CLEARMODAL (state) { state.lookUserProfile = [] },
+    ISPROMPT (state, payload) { state.isPrompt = payload }
   },
   getters: {
     message: state => state.message,
     fullWidth: state => state.fullWidth,
-    isModal: state => state.isModal
+    isModal: state => state.isModal,
+    isPrompt: state => state.isPrompt
   },
   modules: {
     accountModule,

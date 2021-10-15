@@ -37,15 +37,7 @@ export default {
       this.newRoom = ''
       this.getRoom()
     },
-    enterPrivateRoom (room) {
-      const needPassword = prompt('Please enter password', `${room.hint}`)
-      if (needPassword === `${room.password}`) {
-        this.enterRoom(room.room)
-      } else {
-        this.alertMessage('wrong password')
-      }
-    },
-    ...mapActions(['enterRoom', 'logout', 'newChat', 'getRoom', 'getPrivateRoom', 'alertMessage'])
+    ...mapActions(['enterRoom', 'enterPrivateRoom', 'logout', 'newChat', 'getRoom', 'getPrivateRoom', 'alertMessage'])
   },
   computed: {
     filterAllRoom () {

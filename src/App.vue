@@ -5,6 +5,7 @@
     <router-view/>
     <OnlinePanel v-if="userName"/>
     <Modal v-if="isModal"/>
+    <PromptModal v-if="isPrompt"/>
   </div>
 </template>
 
@@ -13,6 +14,7 @@ import Nav from '@/components/Nav.vue'
 import Message from '@/components/Message.vue'
 import OnlinePanel from '@/components/OnlinePanel.vue'
 import Modal from '@/components/Modal.vue'
+import PromptModal from '@/components/PromptModal.vue'
 import { mapActions, mapGetters } from 'vuex'
 import { auth } from '@/firebase.js'
 
@@ -21,14 +23,15 @@ export default {
     Nav,
     Message,
     OnlinePanel,
-    Modal
+    Modal,
+    PromptModal
   },
   methods: {
     onresize () { this.resizeWidth(document.body.clientWidth) },
     ...mapActions(['resizeWidth', 'UserName', 'UserState'])
   },
   computed: {
-    ...mapGetters(['userName', 'isModal'])
+    ...mapGetters(['userName', 'isModal', 'isPrompt'])
   },
   mounted () {
     window.onresize = () => { this.onresize() }

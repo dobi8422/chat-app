@@ -44,9 +44,8 @@ button{
   color: $A_white;
   border: none;
   border-radius: 0 5px 5px 0;
-  border-top: $A_black 1px solid;
-  border-right: $A_black 1px solid;
-  border-bottom: $A_black 1px solid;
+  border: $A_black 1px solid;
+  border-left: none;
   padding: 1em;
 }
 .content{
@@ -60,8 +59,8 @@ button{
   border-radius: 0 10px 10px 0;
   width: 180px;
   height: 350px;
-  border-top: $A_black 1px solid;
-  border-right: $A_black 1px solid;
+  border: $A_black 1px solid;
+  border-left: none;
   .title{
     margin: 5px;
   }

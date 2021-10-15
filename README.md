@@ -25,22 +25,23 @@ https://dobi8422.github.io/chat-app/
 1. 使用vite
 2. postman測試API
 3. 全域scss in vite (adjust vite.config.js)
-4. vue animation - `<transition>`
+4. vue animation - `<transition>`(nav)
 5. 不使用bootstrap，RWD(chat)，drop-down menu(nav)，Modal(個人資料)
 6. props, emit -> vuex is better (updated)
 >vuex的context包含{ rootState, dispatch, state, ......
 7. Firebase in vite (import problem: version:9 -> route "compat")
-8. input-range
-9. firebase內建函式...set()...，將資料轉成`{屬性: {...}}`，不好利用 -> Object.values() or Object.keys() 轉成`[{...}]`，比較好用 (store/account.js vs. store/chat.js)
+>firebase內建函式...set()...，將資料轉成`{屬性: {...}}`，不好利用 -> Object.values() or Object.keys() 轉成`[{...}]`，比較好用 (store/account.js vs. store/chat.js)
+8. input-range(RWD?)
+9. prompt -> 不好調樣式 -> 直接套Modal(Promp.vue)
 
 ---
 ## 目前優化目標: modal, add photo, add intro, prompt
-* prompt -> Modal
-
-* modal -> 動畫
 * 可替換照片 -> firebase storage
 * 填寫個人介紹 -> input重疊p, temptext
 * 新增貼圖 -> firebase storage
+
+* 簡化vuex -> mapMutations, ...
+* 簡化scss -> 通用...
 
 ---
 ## 待優化

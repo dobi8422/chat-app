@@ -27,13 +27,16 @@ export default {
     async registerAccount ({ dispatch }, payload) {
       const { name, email, password } = payload
       const time = new Date()
-      const id = time.getMilliseconds()
+      let id = time.getMilliseconds()
+      if (id === 394) {
+        id = 395
+      }
       try {
         await auth.createUserWithEmailAndPassword(email, password)
         await auth.currentUser.updateProfile({
           displayName: name,
           photoURL: `https://picsum.photos/id/${id}/200/200`,
-          phoneNumber: 'nothing' // 代替introdution
+          phoneNumber: 'Nothing' // 代替introdution
         })
         router.push('/login')
         dispatch('alertMessage', `Registration success：${name}`)

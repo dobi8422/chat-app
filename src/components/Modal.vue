@@ -1,26 +1,28 @@
 <template>
 <div class="background">
-  <div class="modal">
-    <div class="wrap-0">
-      <h5 class="title">Profile</h5>
-      <button @click="closeModal"><i class="fas fa-times"></i></button>
-    </div>
-    <div class="wrap">
-      <div class="wrap-1">
-        <img :src=userProfile[0].photoURL alt="">
-        <label v-if="userName === userProfile[0].user">
-          <input type="file" @change="alertMessage('not yet open')">
-          <span><i class="fas fa-edit"></i></span>
-        </label>
+  <transition name="modal">
+    <div class="modal">
+      <div class="wrap-0">
+        <h5 class="title">Profile</h5>
+        <button @click="closeModal"><i class="fas fa-times"></i></button>
       </div>
-      <div class="wrap-2">
-        <h5 class="title name">Name</h5>
-        <p>{{ userProfile[0].user }}</p>
+      <div class="wrap">
+        <div class="wrap-1">
+          <img :src=userProfile[0].photoURL alt="">
+          <label v-if="userName === userProfile[0].user">
+            <input type="file" @change="alertMessage('not yet open')">
+            <span><i class="fas fa-edit"></i></span>
+          </label>
+        </div>
+        <div class="wrap-2">
+          <h5 class="title name">Name</h5>
+          <p>{{ userProfile[0].user }}</p>
+        </div>
       </div>
+      <h5 class="title">Introduction</h5>
+      <p>{{ userProfile[0].phoneNumber ? userProfile[0].phoneNumber : 'nothing' }}</p>
     </div>
-    <h5 class="title">Introduction</h5>
-    <p>{{ userProfile[0].phoneNumber ? userProfile[0].phoneNumber : 'There is nothing' }}</p>
-  </div>
+  </transition>
 </div>
 </template>
 
@@ -31,14 +33,6 @@ export default {
     name: ''
   }),
   methods: {
-    // Hi (e) {
-    //   const file = e.target.files[0]
-    //   const reader = new FileReader()
-    //   reader.onload = () => {
-    //     this.convert(reader.result)
-    //   }
-    //   reader.readAsText(file)
-    // },
     ...mapActions(['closeModal', 'alertMessage']) //, 'editProfile'
   },
   computed: {
@@ -47,7 +41,7 @@ export default {
 }
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss">
 .background{
   position: absolute;
   width: 100%;
@@ -99,7 +93,7 @@ export default {
           left: 115px;
           background: $Z_dim;
           border-radius: 50%;
-          padding: .2em .2em .2em .4em;
+          padding: .2em .2em .2em .3em;
         }
         input{
           display: none;

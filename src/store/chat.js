@@ -6,7 +6,8 @@ export default {
     room: '',
     allRoom: [],
     allMessages: [],
-    privateRoom: []
+    privateRoom: [],
+    privateDate: {}
   }),
   actions: {
     newChat ({ dispatch }, payload) {
@@ -37,19 +38,11 @@ export default {
       router.push(`/chat/${payload}`)
       commit('GETMESSAGES', '')
       commit('ENTERROOM', payload)
+      commit('ISPROMPT', false)
     },
-    sendMessage ({ rootState, dispatch, state }, payload) {
-      const time = new Date()
-      const message = {
-        user: rootState.accountModule.userName,
-        content: payload,
-        time: `${time.getHours() < 0 ? '0' + time.getHours() : time.getHours()}:${time.getMinutes() < 10 ? '0' + time.getMinutes() : time.getMinutes()}`,
-        photoURL: auth.currentUser.photoURL,
-        day: time.getDate()
-      }
-      const messageRef = database.ref(`message_${state.room}`)
-      messageRef.push(message)
-      dispatch('getMessages', state.room)
+    enterPrivateRoom ({ commit }, payload) {
+      commit('PRIVATEDATA', payload)
+      commit('ISPROMPT', true)
     },
     getMessages ({ commit, state }) {
       const messagesRef = database.ref(`message_${state.room}`)
@@ -82,18 +75,33 @@ export default {
         })
         commit('GETPRIVATEROOM', privateRoom)
       })
+    },
+    sendMessage ({ rootState, dispatch, state }, payload) {
+      const time = new Date()
+      const message = {
+        user: rootState.accountModule.userName,
+        content: payload,
+        time: `${time.getHours() < 0 ? '0' + time.getHours() : time.getHours()}:${time.getMinutes() < 10 ? '0' + time.getMinutes() : time.getMinutes()}`,
+        photoURL: auth.currentUser.photoURL,
+        day: time.getDate()
+      }
+      const messageRef = database.ref(`message_${state.room}`)
+      messageRef.push(message)
+      dispatch('getMessages', state.room)
     }
   },
   mutations: {
     GETROOM (state, payload) { state.allRoom = payload },
     ENTERROOM (state, payload) { state.room = payload },
     GETMESSAGES (state, payload) { state.allMessages = payload },
-    GETPRIVATEROOM (state, payload) { state.privateRoom = payload }
+    GETPRIVATEROOM (state, payload) { state.privateRoom = payload },
+    PRIVATEDATA (state, payload) { state.privateDate = payload }
   },
   getters: {
     room: state => state.room,
     allRoom: state => state.allRoom,
     allMessages: state => state.allMessages,
-    privateRoom: state => state.privateRoom
+    privateRoom: state => state.privateRoom,
+    privateDate: state => state.privateDate
   }
 }
