@@ -19,7 +19,6 @@ https://dobi8422.github.io/chat-app/
   * 頭像, 名字, 輸入時間
   * 可調整視窗大小
 * 顯示上線人數
-
 ---
 ## 新挑戰
 1. 使用vite
@@ -31,9 +30,9 @@ https://dobi8422.github.io/chat-app/
 >vuex的context包含{ rootState, dispatch, state, ......
 7. Firebase in vite (import problem: version:9 -> route "compat")
 >firebase內建函式...set()...，將資料轉成`{屬性: {...}}`，不好利用 -> Object.values() or Object.keys() 轉成`[{...}]`，比較好用 (store/account.js vs. store/chat.js)
-8. input-range(RWD?)
+8. input-range(RWD)
 9. prompt -> 不好調樣式 -> 直接套Modal(Promp.vue)
-
+10. 隱藏input(edit profile)
 ---
 ## 目前優化目標:
 * firebase storage，遇到問題: 無法取得上傳圖片路徑
@@ -44,7 +43,6 @@ https://dobi8422.github.io/chat-app/
 * 簡化vuex -> mapMutations, ...
 * 簡化scss -> 通用...
 * 簡化css -> mixin, include
-
 ---
 ## 待優化
 1. chat-app 2.0 (已讀, 註冊時間, 加入日期分隔線)
